@@ -1,8 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import bg_image from "./bg_image.jpg";
+// @ts-ignore
+import Typical from "react-typical";
 
-const circleRadius = 100
+const circleRadius = 150;
 
 const ImageBackground = styled.div`
     //Set background image to full cover at all times
@@ -27,6 +29,7 @@ const CopyContainer = styled.div`
 const Circle = styled.div`
   border-radius: 50%;
   background: rgba(0, 0, 0, 0); // transparent
+  // TODO: make box-shadow follow the pattern/curve of the bg image
   box-shadow: inset 30px 30px 73px 22px rgba(0,0,0,0.95);
   width: ${circleRadius * 2}px;
   height: ${circleRadius * 2}px;
@@ -65,8 +68,21 @@ export function Landing() {
       />
       <CopyContainer>
         <h1>Juan Albergen</h1>
+        {/*  TODO: make components re-render individually*/}
+        {/*<Typical*/}
+        {/*    loop={Infinity}*/}
+        {/*    wrapper={'b'}*/}
+        {/*    steps={[*/}
+        {/*        'Front-end Developer',*/}
+        {/*        1000,*/}
+        {/*        'Using React.js',*/}
+        {/*        1000,*/}
+        {/*        'With Typescript',*/}
+        {/*        1000,*/}
+        {/*        'Currently looking for an internship'*/}
+        {/*    ]}*/}
+        {/*/>*/}
         <h2>Front-end Developer</h2>
-        <h3>Javascript, Typescript, React</h3>
       </CopyContainer>
     </ImageBackground>
   );
