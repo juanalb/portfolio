@@ -5,6 +5,12 @@ import bg_image from "./bg_image.jpg";
 import Typical from "react-typical";
 
 const circleRadius = 150;
+// TODO: make components render individually
+// TODO: make box-shadow follow the pattern/curve of the bg image
+// TODO: destructurize components
+// TODO: implement nice typograhy
+// TODO: implement scroll down cta
+
 
 const ImageBackground = styled.div`
     //Set background image to full cover at all times
@@ -59,31 +65,37 @@ export function Landing() {
   };
 
   return (
-    <ImageBackground onMouseMove={e => handleMouseMove(e)}>
+      <ImageBackground onMouseMove={e => handleMouseMove(e)}>
       <Circle
         style={{
           left: xTrail,
           top: yTrail
         }}
       />
-      <CopyContainer>
-        <h1>Juan Albergen</h1>
-        {/*  TODO: make components re-render individually*/}
-        {/*<Typical*/}
-        {/*    loop={Infinity}*/}
-        {/*    wrapper={'b'}*/}
-        {/*    steps={[*/}
-        {/*        'Front-end Developer',*/}
-        {/*        1000,*/}
-        {/*        'Using React.js',*/}
-        {/*        1000,*/}
-        {/*        'With Typescript',*/}
-        {/*        1000,*/}
-        {/*        'Currently looking for an internship'*/}
-        {/*    ]}*/}
-        {/*/>*/}
-        <h2>Front-end Developer</h2>
-      </CopyContainer>
+        <Child/>
     </ImageBackground>
   );
 }
+
+// React.memo prevents this component from re-rendering the parent component,
+// causing this component to render again and give an undesirable behaviour
+const Child = React.memo(function Copy(){
+    return (
+        <CopyContainer>
+            <h1>Juan Albergen</h1>
+            <Typical
+                loop={Infinity}
+                wrapper={'b'}
+                steps={[
+                    'Front-end Developer',
+                    1000,
+                    'Using React.js',
+                    1000,
+                    'With Typescript',
+                    1000,
+                    'Currently looking for an internship'
+                ]}
+            />
+        </CopyContainer>
+    );
+})
